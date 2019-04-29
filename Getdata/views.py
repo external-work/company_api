@@ -5,7 +5,9 @@ def send_data(request, companyname):
 	data = generate_data(companyname)
 	# return JsonResponse({'data':data})
 	data = "The company " + data + " contains these information."
-	print("Sent data about" + data)
+	with open("logging.txt","wa") as file:
+		temp = "Sending data about " + data
+		file.write(temp)
 	return HttpResponse(data)
 
 def generate_data(company):
